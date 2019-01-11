@@ -8,9 +8,7 @@ class Koans extends Sequential {
       new AboutAsserts,
       new AboutValAndVar,
       new AboutLiteralBooleans,
-      new AboutLiteralNumbers,
       new AboutLiteralStrings,
-      new AboutConstructors,
       new AboutTuples,
       new AboutLists,
       new AboutMaps,
@@ -23,14 +21,14 @@ class Koans extends Sequential {
       new AboutCaseClasses,
       new AboutHigherOrderFunctions,
       new AboutPartiallyAppliedFunctions,
-      new AboutPartialFunctions,
+      // new AboutPartialFunctions,
       new AboutForExpressions,
       new AboutEnumerations,
       new AboutEmptyValues,
       new AboutParentClasses,
       new AboutNamedAndDefaultArguments,
-      new AboutInfixPrefixAndPostfixOperators,
-      new AboutInfixTypes,
+      // new AboutInfixPrefixAndPostfixOperators,
+      // new AboutInfixTypes,
       new AboutAccessModifiers,
       new AboutTypeSignatures,
       new AboutTraits,
@@ -39,6 +37,6 @@ class Koans extends Sequential {
       new AboutUniformAccessPrinciple,
       new AboutImplicits,
       new AboutInteroperability,
-      new AboutManifests
+      // new AboutManifests
     ).toIndexedSeq
 }

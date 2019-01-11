@@ -13,10 +13,10 @@ class AboutPatternMatching extends KoanSuite  {
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red" => println("RED"); 1
-      case "blue" => println("BLUE"); 2
-      case "green" => println("GREEN"); 3
-      case _ => println(stuff); 0
+      case "red" =>   1
+      case "blue" =>  2
+      case "green" => 3
+      case _ =>       0
     }
 
     myStuff should be(__)
@@ -27,10 +27,10 @@ class AboutPatternMatching extends KoanSuite  {
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red" => (255, 0, 0)
-      case "green" => (0, 255, 0)
-      case "blue" => (0, 0, 255)
-      case _ => println(stuff); 0
+      case "red" =>     (255, 0, 0)
+      case "green" =>   (0, 255, 0)
+      case "blue" =>    (0, 0, 255)
+      case _ =>         0
     }
 
     myStuff should be(__)
