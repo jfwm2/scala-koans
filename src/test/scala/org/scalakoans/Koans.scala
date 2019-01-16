@@ -42,6 +42,7 @@ class Koans extends Sequential {
 
       // Custom
       new AboutExtractors,
-      new AboutFunctionalProgramming
+      new AboutFunctionalProgramming,
+      new AboutFutures
     ).toIndexedSeq
 }
