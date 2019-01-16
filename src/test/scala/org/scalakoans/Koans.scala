@@ -38,6 +38,10 @@ class Koans extends Sequential {
       new AboutImplicits,
       new AboutInteroperability,
       // new AboutManifests
-      new AboutTraversables
+      new AboutTraversables,
+
+      // Custom
+      new AboutExtractors,
+      new AboutFunctionalProgramming
     ).toIndexedSeq
 }
