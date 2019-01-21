@@ -3,6 +3,7 @@ package org.scalakoans
 import org.scalakoans.support.KoanSuite
 import org.scalakoans.support.BlankValues.__
 
+import scala.language.postfixOps
 import scala.util.{Failure, Success}
 
 /**
@@ -46,7 +47,7 @@ class AboutFutures extends KoanSuite {
     val eventuallyResult: Future[Int] = ???
 
     // Here we block the thread until the future is completed
-    Await.result(eventuallyResult, atMost = 5 seconds) should be(176)
+    Await.result(eventuallyResult, atMost = 5 seconds) should be(84)
   }
 
   koan("Composing a future with another future value") {
@@ -57,7 +58,7 @@ class AboutFutures extends KoanSuite {
     // How can we do this without blocking the thread?
     val eventuallyResult: Future[Int] = ???
 
-    Await.result(eventuallyResult, atMost = 5 seconds) should be(176)
+    Await.result(eventuallyResult, atMost = 5 seconds) should be(84)
   }
 
   koan("You can create already completed Future") {
@@ -107,7 +108,7 @@ class AboutFutures extends KoanSuite {
   }
 
   koan("Let's sum a sequence of future values") {
-    val eventuallyInts: Seq[Future[Int]] = (1 to 32).map(i => eventually(i))
+    val eventuallyInts: List[Future[Int]] = (1 to 32).map(i => eventually(i)).toList
 
     // Let's sum all these values.
     // How can we do this without blocking the thread?
