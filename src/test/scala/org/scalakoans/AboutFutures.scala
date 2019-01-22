@@ -44,7 +44,7 @@ class AboutFutures extends KoanSuite {
 
     // Let's multiply this int by 2.
     // How can we do this without blocking the thread?
-    val eventuallyResult: Future[Int] = ???
+    val eventuallyResult: Future[Int] = eventuallyInt.map(_ * 2)
 
     // Here we block the thread until the future is completed
     Await.result(eventuallyResult, atMost = 5 seconds) should be(84)

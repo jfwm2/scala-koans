@@ -18,7 +18,7 @@ class AboutExtractors extends KoanSuite {
     // What the compiler actually does:
     // val extractedString = Email.unapply(email).get
 
-    (extractedString == mailstring) should be(__)
+    (extractedString == mailstring) should be(true)
   }
 
   koan("Extractors can have multiple return values") {
@@ -30,8 +30,8 @@ class AboutExtractors extends KoanSuite {
     val email = new Email("foo@bar.com", 5)
     val Email(extractedString, extractedRatio) = email
 
-    extractedRatio should be(__)
-    extractedString should be(__)
+    extractedRatio should be(5)
+    extractedString should be("foo@bar.com")
   }
 
   koan("An extractor is defined by default for case classes") {
@@ -41,7 +41,7 @@ class AboutExtractors extends KoanSuite {
     val email = Email(mailstring)
     val Email(extractedString) = email
 
-    extractedString should be(__)
+    extractedString should be("foo@bar.com")
   }
 
   koan("Pattern matching is similar to switch cases") {
@@ -56,7 +56,7 @@ class AboutExtractors extends KoanSuite {
       case _ => "DEFAULT"
     }
 
-    actual should be(__)
+    actual should be("stringB")
 
     val nextActual = "E" match {
       case "A" => "stringA"
@@ -65,7 +65,7 @@ class AboutExtractors extends KoanSuite {
       case _   => "DEFAULT"
     }
 
-    nextActual should be(__)
+    nextActual should be("DEFAULT")
   }
 
   koan("Order matters inside a pattern matching") {
@@ -74,7 +74,7 @@ class AboutExtractors extends KoanSuite {
       case "A" => "found A"
     }
 
-    actual should be(__)
+    actual should be("DEFAULT")
   }
 
   koan("You can use pattern matching with case classes to capture inner values") {
@@ -87,7 +87,7 @@ class AboutExtractors extends KoanSuite {
       case _       => "DEFAULT"
     }
 
-    actual should be(__)
+    actual should be("stringB")
   }
 
   koan("You do not have to capture all values") {
@@ -99,7 +99,7 @@ class AboutExtractors extends KoanSuite {
       case _       => "DEFAULT"
     }
 
-    actual should be(__)
+    actual should be("string")
   }
 
 
@@ -110,7 +110,7 @@ class AboutExtractors extends KoanSuite {
       case _                  => "DEFAULT"
     }
 
-    actual should be(__)
+    actual should be("ok")
 
     val consActual = s match {
       case "a" :: Nil               => "ko"
@@ -118,14 +118,14 @@ class AboutExtractors extends KoanSuite {
       case _                        => "DEFAULT"
     }
 
-    consActual should be(__)
+    consActual should be("ok")
 
     val headtailActual = s match {
       case head :: tail => tail
       case _            => "DEFAULT"
     }
 
-    headtailActual should be(__)
+    headtailActual should be(List("b", "c"))
   }
 
 }

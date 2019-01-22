@@ -9,9 +9,9 @@ class AboutLists extends KoanSuite  {
     val a: List[String] = Nil
     val b: List[Int] = Nil
 
-    (a == Nil) should be(__)
-    (b == Nil) should be(__)
-    (a == b) should be(__)
+    (a == Nil) should be(true)
+    (b == Nil) should be(true)
+    (a == b) should be(true)
     
   }
 
@@ -25,7 +25,7 @@ class AboutLists extends KoanSuite  {
     val b = List(1, 2, 3)
 
 
-    (a eq b) should be(__)
+    (a eq b) should be(false)
   }
 
   koan("Lists can be accessed via head and tail") {
@@ -109,9 +109,9 @@ class AboutLists extends KoanSuite  {
 
   koan("You can create a list from a range") {
     val a = (1 to 5).toList
-    a should be(__)
+    a should be(List(1, 2, 3, 4, 5))
     val b = (1 until 5).toList
-    b should be(__)
+    b should be(List(1, 2, 3, 4))
   }
 
   koan("Lists reuse their tails") {
@@ -120,10 +120,10 @@ class AboutLists extends KoanSuite  {
     val b = 2 :: c
     val a = 1 :: b
 
-    a should be(__)
-    a.tail should be(__)
-    b.tail should be(__)
-    c.tail should be(__)
+    a should be(List(1,2,3))
+    a.tail should be(List(2,3))
+    b.tail should be(List(3))
+    c.tail should be(Nil)
   }
 
   //For more about what lists can do, visit AboutTraversables.scala koans

@@ -34,7 +34,7 @@ class AboutForExpressions extends KoanSuite  {
       }
       yield i
 
-    theList.reduceLeft(_ + _) should be(__)
+    theList.reduceLeft(_ + _) should be(20)
   }
 
   koan("For expressions can nest, with later generators varying more rapidly than earlier ones") {
@@ -45,7 +45,7 @@ class AboutForExpressions extends KoanSuite  {
       y <- yValues
     }
     yield (x, y)
-    coordinates(4) should be(__)
+    coordinates(4) should be((3,1))
   }
 
 

@@ -103,10 +103,10 @@ class AboutTraits extends KoanSuite  {
     val evt = Event("Moose Stampede", this)
     val myListener = new MyListener()
 
-    myListener.isInstanceOf[MyListener] should be(__)
-    myListener.isInstanceOf[EventListener] should be(__)
-    myListener.isInstanceOf[Any] should be(__)
-    myListener.isInstanceOf[AnyRef] should be(__)
+    myListener.isInstanceOf[MyListener] should be(true)
+    myListener.isInstanceOf[EventListener] should be(true)
+    myListener.isInstanceOf[Any] should be(true)
+    myListener.isInstanceOf[AnyRef] should be(true)
   }
 
   koan("""Traits can have concrete method implementations that can be mixed
@@ -139,11 +139,11 @@ class AboutTraits extends KoanSuite  {
     val baker = new Baker
     baker.bake()
 
-    welder.logCache.size should be(__)
-    baker.logCache.size should be(__)
+    welder.logCache.size should be(1)
+    baker.logCache.size should be(1)
 
-    welder.logCache.head should be(__)
-    baker.logCache.head should be(__)
+    welder.logCache.head should be("welding pipe")
+    baker.logCache.head should be("baking cake")
   }
 
   koan("""Traits can have concrete implementations, but can still be overridden by classes that
@@ -183,11 +183,11 @@ class AboutTraits extends KoanSuite  {
     val baker = new Baker
     baker.bake() //Parenthesis are used to make calls on methods with side-effects
 
-    welder.logCache.size should be(__)
-    baker.logCache.size should be(__)
+    welder.logCache.size should be(1)
+    baker.logCache.size should be(1)
 
-    welder.logCache.head should be(__)
-    baker.logCache.head should be(__)
+    welder.logCache.head should be("Weld Log : welding pipe")
+    baker.logCache.head should be("Bake Log : baking cake")
   }
 
   koan("""Traits can be stacked with other traits to create customizable decorative abstractions for a class""") {
@@ -226,7 +226,7 @@ class AboutTraits extends KoanSuite  {
 
     val baker = new Baker
     baker.bake()
-    baker.logCache.head should be(__)
+    baker.logCache.head should be("January, 12, 2025 : Root said: baking cake")
 
     class Welder extends Object with ListLog with TimedLog {
       // I don't want UserLog with a Welder
@@ -237,7 +237,7 @@ class AboutTraits extends KoanSuite  {
 
     val welder = new Welder
     welder.weld()
-    welder.logCache.head should be(__)
+    welder.logCache.head should be("January, 12, 2025 : welding pipe")
   }
 
   koan("""Traits can be stacked with other traits to create customizable decorative
@@ -272,7 +272,7 @@ class AboutTraits extends KoanSuite  {
     case class Baker() //define a class
     val baker = new Baker with ListLog with UserLog with TimedLog //Pick and choose what traits to stack!
     baker.log("baked cake")
-    baker.logCache.head should be(__) //Whoa!
+    baker.logCache.head should be("Root said: January, 12, 2025 : baked cake") //Whoa!
   }
 
 
@@ -295,7 +295,7 @@ class AboutTraits extends KoanSuite  {
     new C1
     sb = sb :+ "Created C1"
 
-    sb.mkString(";") should be(__)
+    sb.mkString(";") should be("Creating C1;In T1: x=0;In T1: x=1;In C1: y=0;In C1: y=2;Created C1")
   }
 
 
@@ -356,7 +356,7 @@ class AboutTraits extends KoanSuite  {
     sb = sb :+ "Created C1"
 
     sb.mkString(";") should
-            be(__)
+            be("Creating C1;In T2: z=0;In T2: z=1;In T1: x=0;In T1: x=1;In C1: y=0;In C1: y=2;Created C1")
   }
 
 
@@ -393,6 +393,6 @@ class AboutTraits extends KoanSuite  {
     new C1
     sb = sb :+ "Created C1"
 
-    sb.mkString(";") should be(__)
+    sb.mkString(";") should be("Creating C1;In T1: x=0;In T1: x=1;In T2: z=0;In T2: z=2;In T3: w=0;In T3: w=3;In C1: y=0;In C1: y=4;Created C1")
   }
 }

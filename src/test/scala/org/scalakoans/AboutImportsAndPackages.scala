@@ -8,8 +8,8 @@ class AboutImportsAndPackages extends KoanSuite  {
   koan("An import can be placed in a method, hint this koan is a method") {
     import scala.collection.mutable.ArrayBuffer
     val arrayBuffer = ArrayBuffer.range(2, 10)
-    arrayBuffer(0) should be(__)
-    arrayBuffer(1) should be(__)
+    arrayBuffer(0) should be(2)
+    arrayBuffer(1) should be(3)
   }
 }
 
